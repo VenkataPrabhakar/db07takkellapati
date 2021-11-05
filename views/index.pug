@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} server 
+  p VenkataPrabhakarTakkellapati
+
+  button(type="button" class="btn btn-success" onclick="update()") Press Me
+  <pre>
+
+  </pre>
+  <div id="target">Display</div>
+
+  script.
+    var client_count=0;
+    function update() {
+      client_count++;
+        console.log(client_count)
+      document.getElementById("target").innerHTML = "Value now " +client_count;
+    }

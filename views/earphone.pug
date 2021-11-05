@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  - values = [{brandName: 'Beats', isWireless: true, manufacturedYear: 2020}, {brandName: 'Sennheiser', isWireless: false, manufacturedYear: 2019},{brandName: 'Skullcandy', isWireless: false, manufacturedYear: 2010} ]
+  div(class="container-fluid")
+      each item,index in values
+        div(class="row" onclick=`buy(${index})`)
+          div(class="col-sm-2")  #{item.brandName}
+          div(class="col-sm-2")  #{item.manufacturedYear}
+          div(class="col-sm-2")  #{item.isWireless}
+  script.
+
+     function buy(itemNo)
+     {
+       alert(`You purchased Item ${itemNo+1}`)
+     }
