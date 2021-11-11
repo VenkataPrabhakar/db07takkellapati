@@ -24,7 +24,9 @@ var earphoneRouter = require('./routes/earphone');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 const Costume = require("./models/costume");
-const resoureRouter = require('./routes/resource')
+const resoureRouter = require('./routes/resource');
+var costumeRouter = require('./routes/costume');
+
 var app = express();
 
 // view engine setup
@@ -43,6 +45,8 @@ app.use('/earphone', earphoneRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resoureRouter);
+app.use('/costumes', costumeRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
