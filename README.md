@@ -1,6 +1,6 @@
 # fwb07takkellapati assignment-10
 deploying server into heroku
-hosted at https://fwb07takkellapati.herokuapp.com/
+hosted at https://db07takkellapati.herokuapp.com/
 
 Alphabets - E, F
 
