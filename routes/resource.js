@@ -28,6 +28,6 @@ costume_controller.costume_update_put);
 // GET request for one Costume. 
 router.get('/costumes/:id', costume_controller.costume_detail); 
  
+
 // GET request for list of all Costume items. 
- 
 module.exports = router; 
