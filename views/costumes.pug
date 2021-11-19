@@ -13,6 +13,7 @@ block content
                 td Action
         tbody 
             each item in list 
+             -let destination = `dispatch(\"/costumes/update?id=${item._id}\")` 
                 tr
                     td #{item.costume_type}
                     td #{item.size}
@@ -22,3 +23,10 @@ block content
                             a(class="btn btn-primary", style="margin-right:5px", href=` /costume/detail?id=${item.id}`) Details
                             a(class="btn btn-secondary", style="margin-right:5px", href=` /costume/update?id=${item.id}`) Edit 
                             a(class="btn btn-danger", style="margin-right:5px", href=` /costume/delete?id=${item.id}`) Delete
+                            button.btn( class="btn-primary ml-1", onclick= destination) Update    
+
+    script. 
+     function dispatch(path){ 
+      window.location.href=path 
+     } 
+ 
