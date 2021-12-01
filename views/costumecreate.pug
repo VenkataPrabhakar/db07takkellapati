@@ -25,7 +25,11 @@ block content
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
+         if(body.error) {
+         return alert(body.error)
+        }
         alert("Save succeded") 
+        window.location.href='/costumes'
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 

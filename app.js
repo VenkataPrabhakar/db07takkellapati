@@ -28,7 +28,7 @@ var selectorRouter = require('./routes/selector');
 const Costume = require("./models/costume");
 const resoureRouter = require('./routes/resource');
 var costumeRouter = require('./routes/costume');
-
+var Account = require('./models/account');
 var app = express();
 
 // view engine setup
@@ -84,9 +84,9 @@ async function recreateDB(){
   // Delete everything 
   await Costume.deleteMany(); 
  
-  let instance1 = new Costume({costume_type:"ghost",  size:'large', cost:25.4}); 
-  let instance2 = new Costume({costume_type:"Bahubali",  size:'Medium', cost:36.4}); 
-  let instance3 = new Costume({costume_type:"BlackWidow",  size:'small', cost:42.6}); 
+  let instance1 = new Costume({costume_type:"ghost",  size:'large', cost:125.4}); 
+  let instance2 = new Costume({costume_type:"Bahubali",  size:'Medium', cost:136.4}); 
+  let instance3 = new Costume({costume_type:"BlackWidow",  size:'small', cost:142.6}); 
 
   instance1.save( function(err,doc) { 
       if(err) return console.error(err); 
@@ -110,11 +110,20 @@ passport.use(new LocalStrategy(
       if (!user) { 
         return done(null, false, { message: 'Incorrect username.' }); 
       } 
-      if (!user.validPassword(password)) { 
+      console.log(user)
+      if ( user.validPassword && !user.validPassword(password)) { 
         return done(null, false, { message: 'Incorrect password.' }); 
       } 
       return done(null, user); 
     }); 
-  } 
-));  
+  }))
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  Account.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
 module.exports = app;
